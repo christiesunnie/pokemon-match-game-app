@@ -21,7 +21,7 @@ $(document).ready(function () {
     // Declare the global varaiables
     let playerName, timer;
     let curLives = 3;
-    let time = 120;
+    let time = 60;
 
     const $message = $(".message");
     const $liveNumber = $(".lives-number");
@@ -117,7 +117,7 @@ $(document).ready(function () {
     $(".btn-new--game").on("click", function () {
         $message.text("");
         removeClasses();
-        time = 120;
+        time = 60;
         resetTimer();
         $cardContainer.empty();
 
@@ -165,7 +165,7 @@ $(document).ready(function () {
             // Print the message when winning the game
             if ($(".hidden").length === 16) {
                 clearTimeout(timer);
-                time = 120;
+                time = 60;
                 timerUI();
                 resetLives();
                 $message.text("Congratulation! You won!");
