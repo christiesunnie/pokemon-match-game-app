@@ -1,27 +1,27 @@
 const imgArray = [
     "src/image/bug.webp",
-    "src/image/grass.webp",
-    "src/image/poison.webp",
     "src/image/bug.webp",
-    "src/image/psychic.webp",
-    "src/image/ground.webp",
-    "src/image/ice.webp",
+    "src/image/grass.webp",
+    "src/image/grass.webp",
+    "src/image/poison.webp",
     "src/image/rock.webp",
-    "src/image/steel.webp",
-    "src/image/psychic.webp",
-    "src/image/steel.webp",
     "src/image/rock.webp",
     "src/image/poison.webp",
-    "src/image/grass.webp",
+    "src/image/psychic.webp",
+    "src/image/psychic.webp",
+    "src/image/ground.webp",
     "src/image/ground.webp",
     "src/image/ice.webp",
+    "src/image/ice.webp",
+    "src/image/steel.webp",
+    "src/image/steel.webp",
 ];
 
 $(document).ready(function () {
     // Declare the global varaiables
     let playerName, timer;
     let curLives = 3;
-    let time = 60;
+    let time = 90;
 
     const $message = $(".message");
     const $liveNumber = $(".lives-number");
@@ -29,20 +29,25 @@ $(document).ready(function () {
 
     //////////////////// Functions ///////////////////////////
 
-    /* Display images */
+    /* Function to display images */
     const displayImages = function (url, title) {
         const imagesHtml = `
-              <section class="card">
-                    <img src="${url}" alt="Pokemon ${title}" />
-                </section>
+        <section class="card">
+            <img src="${url}" alt="Pokemon ${title}" />
+        </section>
     `;
         $cardContainer.append(imagesHtml);
     };
 
-    // Map all of the images in the array to print to UI
-    imgArray.forEach((img) => {
-        displayImages(img, img.slice(10, 13));
-    });
+    // Function for shuffling the array of cards
+    const shuffleArray = function (arr) {
+        arr.sort(() => Math.random() - 0.5).forEach((img) =>
+            displayImages(img, img.slice(10, 13))
+        );
+    };
+
+    // Call the function when the page is loaded
+    shuffleArray(imgArray);
 
     /* Set timer in UI function */
     const timerUI = function () {
@@ -112,8 +117,12 @@ $(document).ready(function () {
     $(".btn-new--game").on("click", function () {
         $message.text("");
         removeClasses();
-        time = 60;
+        time = 90;
         resetTimer();
+        $cardContainer.empty();
+
+        // Call the function to  shuffle the aray of card when click new game button
+        shuffleArray(imgArray);
 
         // Reset lives when game over
         if (curLives === 0) {
@@ -156,7 +165,7 @@ $(document).ready(function () {
             // Print the message when winning the game
             if ($(".hidden").length === 16) {
                 clearTimeout(timer);
-                time = 60;
+                time = 90;
                 timerUI();
                 resetLives();
                 $message.text("Congratulation! You won!");

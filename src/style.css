@@ -39,7 +39,7 @@ body:after {
     right: 0;
     bottom: 0;
     background: url("./image/background-image.webp") center top;
-    opacity: 0.3;
+    opacity: 0.45;
     z-index: -99;
 }
 
