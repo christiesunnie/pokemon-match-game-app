@@ -1,27 +1,26 @@
-const imgArray = [
-    "src/image/bug.webp",
-    "src/image/bug.webp",
-    "src/image/grass.webp",
-    "src/image/grass.webp",
-    "src/image/poison.webp",
-    "src/image/rock.webp",
-    "src/image/rock.webp",
-    "src/image/poison.webp",
-    "src/image/psychic.webp",
-    "src/image/psychic.webp",
-    "src/image/ground.webp",
-    "src/image/ground.webp",
-    "src/image/ice.webp",
-    "src/image/ice.webp",
-    "src/image/steel.webp",
-    "src/image/steel.webp",
-];
-
 $(document).ready(function () {
     // Declare the global varaiables
+    const imgArray = [
+        "src/image/bug.webp",
+        "src/image/bug.webp",
+        "src/image/grass.webp",
+        "src/image/grass.webp",
+        "src/image/poison.webp",
+        "src/image/rock.webp",
+        "src/image/rock.webp",
+        "src/image/poison.webp",
+        "src/image/psychic.webp",
+        "src/image/psychic.webp",
+        "src/image/ground.webp",
+        "src/image/ground.webp",
+        "src/image/ice.webp",
+        "src/image/ice.webp",
+        "src/image/steel.webp",
+        "src/image/steel.webp",
+    ];
     let playerName, timer;
     let curLives = 3;
-    let time = 60;
+    let time = 90;
 
     const $message = $(".message");
     const $liveNumber = $(".lives-number");
@@ -117,7 +116,7 @@ $(document).ready(function () {
     $(".btn-new--game").on("click", function () {
         $message.text("");
         removeClasses();
-        time = 60;
+        time = 90;
         resetTimer();
         $cardContainer.empty();
 
@@ -165,7 +164,7 @@ $(document).ready(function () {
             // Print the message when winning the game
             if ($(".hidden").length === 16) {
                 clearTimeout(timer);
-                time = 60;
+                time = 90;
                 timerUI();
                 resetLives();
                 $message.text("Congratulation! You won!");
